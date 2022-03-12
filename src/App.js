@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 // CSS Settings
 import { Header, AppNameComp, SearchComp, SearchInput } from './components/headerComponents';
+import Footer from './components/Footer';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -146,6 +147,7 @@ function App() {
             <SeeCompleteLabel>See Complete Recipe</SeeCompleteLabel>
         </RecipeContainer>
       </RecipeList>
+      <Footer />
     </Container>
   );
 }
