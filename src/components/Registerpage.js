@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './login-form.css';
+import {Link} from 'react-router-dom';
 
 const Registerpage = () => {
     return (
@@ -22,7 +23,7 @@ const Registerpage = () => {
             </FormGroup>
             <Button color="primary" size="lg" block>Sign Up</Button>
             <div className='text-center pt-3'>Or have an account? Login here</div>
-            <Button color="primary" size="lg" block>Login</Button>
+            <Link to="/"><Button className='mt-2 mb-2' color="primary" size="lg" block>Login</Button></Link>
         </Form>
     )
 }
