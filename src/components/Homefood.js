@@ -31,6 +31,11 @@ const RecipeList = styled.div`
   gap: 20;
   justify-content: space-evenly;
 `;
+const Placeholder = styled.img`
+  width: 140px;
+  height: 140px;
+  margin: 200px;
+`;
 
 const RecipeComponent = (props) => {
   const [show, setShow] = useState(false);
@@ -39,7 +44,7 @@ const RecipeComponent = (props) => {
   return (
     <>
       <Dialog open={show}>
-        <DialogTitle>Ingredients</DialogTitle>
+        <DialogTitle>Detail Recipe</DialogTitle>
         <DialogContent>
           <table>
             <thead>
@@ -50,11 +55,15 @@ const RecipeComponent = (props) => {
               {recipeObj.ingredients.map((ingredientObj) => ( 
               <tr>
                 <td>{ingredientObj.text}</td>
-                <td>{ingredientObj.weights}</td>
+                <td>{ingredientObj.weight}</td>
               </tr>))}
             </tbody>
           </table>
         </DialogContent>
+        <DialogActions>
+          <IngredientsLabel onClick={() => window.open(recipeObj.url)}>See More</IngredientsLabel>
+          <SeeCompleteLabel onClick={() => setShow("")}>Close</SeeCompleteLabel>
+        </DialogActions>
       </Dialog>
       <RecipeContainer>
         <img src={recipeObj.image} />
@@ -93,32 +102,10 @@ const Homefood = () => {
         </SearchComp>
       </Header>
       <RecipeList>
-        {ListRecipe.length &&
+        {ListRecipe.length ?
           ListRecipe.map((recipeObj) => (
             <RecipeComponent recipeObj={recipeObj.recipe} />
-          ))}
-
-
-        {/* <RecipeContainer>
-          <img src="/paimon-logo.png" />
-          <RecipeName>Recipe One</RecipeName>
-          <IngredientsLabel>Ingredients</IngredientsLabel>
-          <SeeCompleteLabel>See Complete Recipe</SeeCompleteLabel>
-        </RecipeContainer> */}
-
-        {/* <RecipeContainer>
-          <img src="/paimon-logo.png" />
-          <RecipeName>Recipe One</RecipeName>
-          <IngredientsLabel>Ingredients</IngredientsLabel>
-          <SeeCompleteLabel>See Complete Recipe</SeeCompleteLabel>
-        </RecipeContainer>
-
-        <RecipeContainer>
-          <img src="/paimon-logo.png" />
-          <RecipeName>Recipe One</RecipeName>
-          <IngredientsLabel>Ingredients</IngredientsLabel>
-          <SeeCompleteLabel>See Complete Recipe</SeeCompleteLabel>
-        </RecipeContainer> */}
+          )): <Placeholder src="/paimon-logo.png"/>}
       </RecipeList>
     </Container>
   );
